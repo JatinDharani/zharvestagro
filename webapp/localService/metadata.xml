@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CAPABILITIES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_AGGREGATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Aggregation.V1" Alias="Aggregation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_PERSONALDATA',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.PersonalData.v1" Alias="PersonalData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_VALIDATION',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Validation.V1" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_ANALYTICS',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.Analytics.v1" Alias="Analytics"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="./sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_UI',Version='0001',SAP__Origin='')/$value" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="cds_zui_harvest" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="HarvestType" sap:label="Harvest Projection View" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="HarvestId"/>
+                </Key>
+                <Property Name="HarvestId" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Harvest ID" sap:quickinfo="Harvest ID - RT"/>
+                <Property Name="CreatDt" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Harvest Date"/>
+                <Property Name="AgronomId" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:text="UName" sap:label="Agronomist ID" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="UName" Type="Edm.String" MaxLength="80" sap:label="Full Name" sap:quickinfo="Full Name of Person" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Matnr" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:text="Hybrid" sap:label="Material" sap:quickinfo="Material Number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Hybrid" Type="Edm.String" MaxLength="40" sap:label="Material description" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="GrowerId" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:text="GrowerName" sap:label="Grower ID" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="GrowerName" Type="Edm.String" MaxLength="80" sap:label="Name of Supplier" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="FieldId" Type="Edm.String" MaxLength="10" sap:label="Field ID" sap:quickinfo="Grower Cockpit: Field ID - RT" sap:value-list="standard"/>
+                <Property Name="RoutingId" Type="Edm.String" MaxLength="14" sap:display-format="UpperCase" sap:label="Routing Id" sap:quickinfo="Routing ID" sap:value-list="standard"/>
+                <Property Name="LoadDetail" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Load Details"/>
+                <Property Name="LastLoad" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Last Load" sap:quickinfo="Last Load RT"/>
+                <Property Name="SplitLoad" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Split Load" sap:quickinfo="Split Load RT"/>
+                <Property Name="CombineCl" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Combine Cleaned"/>
+                <Property Name="GrainCl" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Graincart Cleaned" sap:quickinfo="Grain Cart Cleaned"/>
+                <Property Name="TruckCl" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Truck Cleaned"/>
+                <Property Name="showPdf" Type="Edm.String" MaxLength="10" sap:label="PDF"/>
+                <Property Name="valueLink" Type="Edm.String" MaxLength="85"/>
+                <Property Name="VehicleType" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Vehicle Type - RT" sap:heading="" sap:value-list="fixed-values"/>
+                <Property Name="TruckComp" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Trucking Company" sap:quickinfo="Trucking Company RT" sap:value-list="standard"/>
+                <Property Name="TrailerPlates" Type="Edm.String" MaxLength="20" sap:display-format="UpperCase" sap:label="Trailer Plates" sap:quickinfo="Trailer Plates RT" sap:value-list="standard"/>
+                <Property Name="VhMileage" Type="Edm.Decimal" Precision="6" Scale="2" sap:label="Vehicle Mileage"/>
+                <Property Name="MileageRate" Type="Edm.Decimal" Precision="6" Scale="2" sap:label="Mileage Rate" sap:quickinfo="Mileage Rate in Dollar"/>
+                <Property Name="Plant" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="CropYr" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Crop Year"/>
+                <Property Name="DryerSite" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:text="DryBin" sap:label="Dryer Site" sap:quickinfo="Dryer Site Storage Location" sap:value-list="standard"/>
+                <Property Name="DryBin" Type="Edm.String" MaxLength="16" sap:label="Description" sap:quickinfo="Description of Storage Location" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="PlacedBin" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:text="PlcBin" sap:label="Placed Bin" sap:quickinfo="Placed Storage Bin" sap:value-list="standard"/>
+                <Property Name="PlcBin" Type="Edm.String" MaxLength="16" sap:label="Description" sap:quickinfo="Description of Storage Location" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="TimeUnload" Type="Edm.Time" Precision="0" sap:label="Truck Unload Time"/>
+                <Property Name="DateUnload" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Truck Unload Date" sap:quickinfo="Unload Date"/>
+                <Property Name="NtWt" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="Uom" sap:label="Net weight" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="GrWt" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="Uom" sap:label="Gross weight"/>
+                <Property Name="CpWt" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="Uom" sap:label="Net weight"/>
+                <Property Name="TrWt" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="Uom" sap:label="Net weight"/>
+                <Property Name="DrWt" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="Uom" sap:label="Net weight" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Uom" Type="Edm.String" MaxLength="3" sap:label="Weight unit" sap:quickinfo="Weight Unit" sap:semantics="unit-of-measure"/>
+                <Property Name="Moisture" Type="Edm.Decimal" Precision="6" Scale="3" sap:label="Actual Moisture"/>
+                <Property Name="BatchNo" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Batch" sap:quickinfo="Batch Number" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Mblnr" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Material Document" sap:quickinfo="Number of Material Document"/>
+                <Property Name="Budat" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Posting Date" sap:quickinfo="Posting Date in the Document" sap:creatable="false" sap:updatable="false"/>
+                <Property Name="Createdts" Type="Edm.DateTimeOffset" Precision="7" sap:label="Time Stamp" sap:quickinfo="UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)" sap:creatable="false" sap:updatable="false"/>
+                <NavigationProperty Name="to_FieldId" Relationship="cds_zui_harvest.assoc_8107A53E2989F3D4D6868AA13736660A" FromRole="FromRole_assoc_8107A53E2989F3D4D6868AA13736660A" ToRole="ToRole_assoc_8107A53E2989F3D4D6868AA13736660A"/>
+                <NavigationProperty Name="to_Vehtyp" Relationship="cds_zui_harvest.assoc_A019D8A2623FFB91053D2F46CCF70E15" FromRole="FromRole_assoc_A019D8A2623FFB91053D2F46CCF70E15" ToRole="ToRole_assoc_A019D8A2623FFB91053D2F46CCF70E15"/>
+            </EntityType>
+            <EntityType Name="FieldIDType" sap:label="Field ID details Interface View" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="FieldId"/>
+                    <PropertyRef Name="CropYr"/>
+                    <PropertyRef Name="Aufnr"/>
+                    <PropertyRef Name="Plant"/>
+                </Key>
+                <Property Name="FieldId" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Field ID" sap:quickinfo="Grower Cockpit: Field ID - RT"/>
+                <Property Name="CropYr" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Crop Year"/>
+                <Property Name="Aufnr" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Order" sap:quickinfo="Order Number"/>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="Matnr" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+                <Property Name="MatDesc" Type="Edm.String" MaxLength="40" sap:label="Material description"/>
+                <Property Name="GrowerId" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Grower ID"/>
+                <Property Name="GrowerName" Type="Edm.String" MaxLength="80" sap:label="Name of Supplier"/>
+            </EntityType>
+            <EntityType Name="ZI_PP_LGORTBIN_VHType" sap:label="Value Help for Storage Bin placed" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="Lgort"/>
+                    <PropertyRef Name="plcbin"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="Lgort" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Dryer Site" sap:quickinfo="Dryer Site Storage Location"/>
+                <Property Name="plcbin" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Placed Bin" sap:quickinfo="Placed Storage Bin"/>
+                <Property Name="Lgobe" Type="Edm.String" MaxLength="16" sap:label="Description" sap:quickinfo="Description of Storage Location"/>
+            </EntityType>
+            <EntityType Name="ZI_PP_LGORTDRY_VHType" sap:label="Value Help for Drying Bin" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Plant"/>
+                    <PropertyRef Name="Lgort"/>
+                </Key>
+                <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+                <Property Name="Lgort" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Dryer Site" sap:quickinfo="Dryer Site Storage Location"/>
+                <Property Name="Lgobe" Type="Edm.String" MaxLength="16" sap:label="Description" sap:quickinfo="Description of Storage Location"/>
+            </EntityType>
+            <EntityType Name="ZI_PP_ROUTINGID_VHType" sap:label="Routing ID Value help" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="fieldid"/>
+                    <PropertyRef Name="cropyear"/>
+                    <PropertyRef Name="RoutingId"/>
+                </Key>
+                <Property Name="fieldid" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Field ID" sap:quickinfo="Grower Cockpit: Field ID - RT"/>
+                <Property Name="cropyear" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="NonNegative" sap:label="Crop Year"/>
+                <Property Name="RoutingId" Type="Edm.String" Nullable="false" MaxLength="14" sap:display-format="UpperCase" sap:label="Routing Id" sap:quickinfo="Routing ID"/>
+            </EntityType>
+            <EntityType Name="ZI_PP_TruckCo_VHType" sap:label="Value Help for Trucking Company" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="TruckCo"/>
+                </Key>
+                <Property Name="TruckCo" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Vendor" sap:quickinfo="Account Number of Vendor or Creditor"/>
+                <Property Name="CoName" Type="Edm.String" MaxLength="35" sap:label="Name" sap:quickinfo="Name 1"/>
+            </EntityType>
+            <EntityType Name="ZI_PP_TRUCKPL_VHType" sap:label="Value Help for Trucking Plates" sap:value-list="true" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="TruckCo"/>
+                    <PropertyRef Name="TruckPlates"/>
+                </Key>
+                <Property Name="TruckCo" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Vendor" sap:quickinfo="Account Number of Vendor or Creditor"/>
+                <Property Name="TruckPlates" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Trailer Plates"/>
+            </EntityType>
+            <EntityType Name="VehTypeType" sap:label="Value Help View for Vehicle Type" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Value"/>
+                </Key>
+                <Property Name="Value" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Lower Value" sap:quickinfo="Values for Domains: Single Value/Lower Limit"/>
+                <Property Name="Text" Type="Edm.String" MaxLength="60" sap:label="Short Descript." sap:quickinfo="Short Text for Fixed Values"/>
+            </EntityType>
+            <Association Name="assoc_A019D8A2623FFB91053D2F46CCF70E15" sap:content-version="1">
+                <End Type="cds_zui_harvest.HarvestType" Multiplicity="1" Role="FromRole_assoc_A019D8A2623FFB91053D2F46CCF70E15"/>
+                <End Type="cds_zui_harvest.VehTypeType" Multiplicity="0..1" Role="ToRole_assoc_A019D8A2623FFB91053D2F46CCF70E15"/>
+            </Association>
+            <Association Name="assoc_8107A53E2989F3D4D6868AA13736660A" sap:content-version="1">
+                <End Type="cds_zui_harvest.HarvestType" Multiplicity="1" Role="FromRole_assoc_8107A53E2989F3D4D6868AA13736660A"/>
+                <End Type="cds_zui_harvest.FieldIDType" Multiplicity="0..1" Role="ToRole_assoc_8107A53E2989F3D4D6868AA13736660A"/>
+            </Association>
+            <EntityContainer Name="cds_zui_harvest_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="Harvest" EntityType="cds_zui_harvest.HarvestType" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="FieldID" EntityType="cds_zui_harvest.FieldIDType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZI_PP_LGORTBIN_VH" EntityType="cds_zui_harvest.ZI_PP_LGORTBIN_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZI_PP_LGORTDRY_VH" EntityType="cds_zui_harvest.ZI_PP_LGORTDRY_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZI_PP_ROUTINGID_VH" EntityType="cds_zui_harvest.ZI_PP_ROUTINGID_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZI_PP_TruckCo_VH" EntityType="cds_zui_harvest.ZI_PP_TruckCo_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="ZI_PP_TRUCKPL_VH" EntityType="cds_zui_harvest.ZI_PP_TRUCKPL_VHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <EntitySet Name="VehType" EntityType="cds_zui_harvest.VehTypeType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+                <AssociationSet Name="assoc_8107A53E2989F3D4D6868AA13736660A" Association="cds_zui_harvest.assoc_8107A53E2989F3D4D6868AA13736660A" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Harvest" Role="FromRole_assoc_8107A53E2989F3D4D6868AA13736660A"/>
+                    <End EntitySet="FieldID" Role="ToRole_assoc_8107A53E2989F3D4D6868AA13736660A"/>
+                </AssociationSet>
+                <AssociationSet Name="assoc_A019D8A2623FFB91053D2F46CCF70E15" Association="cds_zui_harvest.assoc_A019D8A2623FFB91053D2F46CCF70E15" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Harvest" Role="FromRole_assoc_A019D8A2623FFB91053D2F46CCF70E15"/>
+                    <End EntitySet="VehType" Role="ToRole_assoc_A019D8A2623FFB91053D2F46CCF70E15"/>
+                </AssociationSet>
+            </EntityContainer>
+            <Annotations Target="cds_zui_harvest.HarvestType/FieldId" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="FieldID"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="FieldId"/>
+                                    <PropertyValue Property="ValueListProperty" String="FieldId"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="CropYr"/>
+                                    <PropertyValue Property="ValueListProperty" String="CropYr"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Plant"/>
+                                    <PropertyValue Property="ValueListProperty" String="Plant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Matnr"/>
+                                    <PropertyValue Property="ValueListProperty" String="Matnr"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Hybrid"/>
+                                    <PropertyValue Property="ValueListProperty" String="MatDesc"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="GrowerId"/>
+                                    <PropertyValue Property="ValueListProperty" String="GrowerId"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="GrowerName"/>
+                                    <PropertyValue Property="ValueListProperty" String="GrowerName"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Aufnr"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zui_harvest.HarvestType/RoutingId" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZI_PP_ROUTINGID_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="FieldId"/>
+                                    <PropertyValue Property="ValueListProperty" String="fieldid"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="RoutingId"/>
+                                    <PropertyValue Property="ValueListProperty" String="RoutingId"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="cropyear"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zui_harvest.HarvestType/VehicleType" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="VehType"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="VehicleType"/>
+                                    <PropertyValue Property="ValueListProperty" String="Text"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Value"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zui_harvest.HarvestType/TruckComp" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZI_PP_TruckCo_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="TruckComp"/>
+                                    <PropertyValue Property="ValueListProperty" String="TruckCo"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="CoName"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zui_harvest.HarvestType/TrailerPlates" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZI_PP_TRUCKPL_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="TruckComp"/>
+                                    <PropertyValue Property="ValueListProperty" String="TruckCo"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="TrailerPlates"/>
+                                    <PropertyValue Property="ValueListProperty" String="TruckPlates"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zui_harvest.HarvestType/DryerSite" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZI_PP_LGORTDRY_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="Plant"/>
+                                    <PropertyValue Property="ValueListProperty" String="Plant"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="DryerSite"/>
+                                    <PropertyValue Property="ValueListProperty" String="Lgort"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Lgobe"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zui_harvest.HarvestType/PlacedBin" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ValueList">
+                    <Record>
+                        <PropertyValue Property="Label" String=""/>
+                        <PropertyValue Property="CollectionPath" String="ZI_PP_LGORTBIN_VH"/>
+                        <PropertyValue Property="SearchSupported" Bool="false"/>
+                        <PropertyValue Property="Parameters">
+                            <Collection>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="DryerSite"/>
+                                    <PropertyValue Property="ValueListProperty" String="Lgort"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterInOut">
+                                    <PropertyValue Property="LocalDataProperty" PropertyPath="PlacedBin"/>
+                                    <PropertyValue Property="ValueListProperty" String="plcbin"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Lgobe"/>
+                                </Record>
+                                <Record Type="Common.ValueListParameterDisplayOnly">
+                                    <PropertyValue Property="ValueListProperty" String="Plant"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zui_harvest.cds_zui_harvest_Entities" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
+                <Annotation Term="Aggregation.ApplySupported">
+                    <Record>
+                        <PropertyValue Property="Transformations">
+                            <Collection>
+                                <String>aggregate</String>
+                                <String>groupby</String>
+                                <String>filter</String>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Rollup" EnumMember="None"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="cds_zui_harvest.HarvestType/HarvestId" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zui_harvest.HarvestType/LoadDetail" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <Annotations Target="cds_zui_harvest.HarvestType/VhMileage" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+                <Annotation Term="Common.FieldControl" EnumMember="Common.FieldControlType/Mandatory"/>
+            </Annotations>
+            <atom:link rel="self" href="https://ds4.hec.ricetec.com:44300/sap/opu/odata/sap/ZUI_HARVEST_V2/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="https://ds4.hec.ricetec.com:44300/sap/opu/odata/sap/ZUI_HARVEST_V2/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
